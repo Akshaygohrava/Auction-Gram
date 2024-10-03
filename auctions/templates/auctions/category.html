@@ -1,0 +1,56 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2 style="text-align: center;">All Categories</h2>
+    <div id="activelist">
+        {% for list in cat_list %}
+            <div class="card">
+                <a class="title bg-light" href={% url 'cat' list.category %}>{{ list.category }}</a>
+            </div>  
+        {% endfor %}
+    </div>
+      
+<style>
+    body {
+    background: radial-gradient(circle, #f4e4d7, transparent); /* Add radial gradient background to the body */
+}
+#activelist {
+    margin-top: 4vw;
+    grid-gap: 2vw;
+    display: grid;
+    width: 60%; /* Adjust the width to your preference */
+    margin: 0 auto; /* Center-align the grid */
+    grid-template-rows: repeat(auto, 1fr);
+    grid-template-columns: 1fr;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+}
+
+.card {
+    display: grid;
+    grid-template-rows: repeat(auto, 1fr);
+    grid-template-columns: 1fr;
+    width: 50%; /* Reduce the card size */
+    margin: 0 auto; /* Center-align the card */
+    background-color: grey;
+    padding: 10px; /* Add some padding for spacing */
+}
+
+.title {
+    font-size: 2vw;
+    color: black;
+    text-decoration: none; /* Remove underlines from links */
+    display: block; /* Make the link cover the whole card */
+}
+
+.listuser {
+    font-weight: bold;
+}
+.bg-light {
+    background-color: #f4e4d7;
+}
+button {
+    width: 100%;
+}
+</style>
+{% endblock %}

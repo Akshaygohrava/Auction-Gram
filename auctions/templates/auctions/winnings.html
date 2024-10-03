@@ -1,0 +1,73 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Your Winnings</h2>
+    <div id="activelist">
+    {% for list in user_winlist %}
+    <div class = "card">
+        <a class="title">{{list.bid_win_list.title}}</a>
+        <a class= "cat">{{list.bid_win_list.category}}</a>
+        {% if list.bid_win_list.image_url %}
+            <img src="{{ list.bid_win_list.image_url }}" class="list_img">
+        {% else %}
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1024px-No_image_3x4.svg.png" alt="No image Provided" class="list_img">
+        {% endif %}
+        <p class="desc">{{ list.bid_win_list.desc }}</p>
+        <div>This bid was listed by <a class = "listuser">{{ list.bid_win_list.user }}</a>.</div>
+    </div>  
+    {% endfor %}
+    </div>
+      
+    <style>
+        body {
+            background: radial-gradient(circle, #f4e4d7, transparent); /* Add radial gradient background to the body */
+        }
+        
+        p {
+            padding: 1vw;
+        }
+        
+        #activelist {
+            margin-top: 4vw;
+            grid-gap: 2vw;
+            display: grid;
+            width: 90%;
+            margin: 0 auto; /* Center-align the grid */
+            grid-template-rows: repeat(auto, 1fr);
+            grid-template-columns: 1fr 1fr 1fr;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+        }
+        
+        .card {
+            display: grid;
+            grid-template-rows: repeat(auto, 1fr);
+            grid-template-columns: 1fr;
+            width: 90%;
+            margin: 0 auto; /* Center-align the card */
+            background-color: #f4e4d7; /* Change to pastel light brown color */
+            padding: 20px; /* Add padding for spacing */
+            text-align: center; /* Center-align the content within the card */
+        }
+        
+        img {
+            width: 100%;
+        }
+        
+        .title {
+            font-size: 2vw;
+            font-weight: bold;
+        }
+        
+        .c_price {
+            font-weight: bold;
+        }
+        
+        .btn {
+            width: 100%;
+            margin-top: 10px; /* Add margin to separate the button from other content */
+        }
+        </style>
+{% endblock %}
+
+

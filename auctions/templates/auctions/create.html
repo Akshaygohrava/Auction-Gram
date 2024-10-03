@@ -1,0 +1,60 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div style="text-align: center;">
+        <h2 style="font-weight: bold; text-align: center; font-family: Nunito;">Create Listing</h2>
+    </div>
+
+    <div id="activelist">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <input required class="form-control" placeholder="Title" autofocus type="text" name="create_title">
+            </div>
+            <div class="form-group">
+                <textarea required class="form-control" placeholder="Add Description" name="create_desc"></textarea>
+            </div>
+            <div class="form-group">
+                <input required class="form-control" placeholder="Starting bid" type="number" name="create_initial_bid">
+            </div>
+            <div class="form-group">
+                <input class="form-control" placeholder="Image URL (optional)" type="text" name="img_url">
+            </div>
+            <div class="form-group">
+                <input required class="form-control" placeholder="Category" type="text" name="category">
+            </div>
+            <button class="btn btn-outline-primary btn-sm" type="submit">Submit</button> <!-- Changed button size to small -->
+        </form>
+    </div>
+      
+<style>
+body {
+    background: radial-gradient(circle, #f4e4d7, transparent); /* Add radial gradient background to the body */
+}
+#activelist {
+    width: 60%;
+    margin: 0 auto; /* Center-align the form */
+    text-align: center; /* Center-align the form elements horizontally */
+}
+
+textarea {
+    height: 10vw;
+}
+
+.form-group {
+    margin-bottom: 1.5rem; /* Add spacing between form elements */
+}
+
+/* Custom style for form inputs */
+.form-control {
+    width: 70%; /* Reduce the width of text boxes */
+    background-color: #f4e4d7; /* Change text box background color */
+    margin: 0 auto; /* Center-align the text boxes horizontally */
+}
+
+.btn {
+    width: 30%;
+    background-color: #f4e4d7;
+}
+</style>
+{% endblock %}
